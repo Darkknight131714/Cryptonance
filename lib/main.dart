@@ -104,7 +104,7 @@ class SecondScreen extends StatelessWidget {
                 )
                 ),
                onPressed: (){
-                 Navigator.push(
+                 Navigator.pushReplacement(
                    context,
                    MaterialPageRoute(builder: (context) => SecondScreenDark()),
                  );
@@ -215,156 +215,158 @@ class details extends StatelessWidget {
               ),
             )),
           ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 10.0),
-            Image.asset('iconss/${datalist[curr]['id'].toString()}.png'),
-            SizedBox(height:10.0),
-            Text("${datalist[curr]['symbol'].toString()}",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                color: Colors.black,
-                fontSize: 36,
-                fontFamily: "Poppins-Light",
-            ),
-            ),
-            SizedBox(height:10.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("     Current Value",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: "Poppins-Light",
-                    )),
-                Text("${datalist[curr]['quote']['USD']['price'].toStringAsFixed(2)}     ",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: "Poppins-Light",
-                    ))
-              ],
-            ),
-            SizedBox(height:10.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("     Number of Market Pair",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: 10.0),
+              Image.asset('iconss/${datalist[curr]['id'].toString()}.png'),
+              SizedBox(height:10.0),
+              Text("${datalist[curr]['symbol'].toString()}",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  fontSize: 36,
                   fontFamily: "Poppins-Light",
-                ),),
-                Text("${datalist[curr]['num_market_pairs'].toStringAsFixed(2)}     ",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                ),)
-              ],
-            ),
-            SizedBox(height:10.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("     Total Supply",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                ),),
-                Text("${datalist[curr]["total_supply"].toStringAsFixed(2)}     ",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                ),)
-              ],
-            ),
-            SizedBox(height:10.0),
-            Text("Percent Change in:-",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                fontFamily: "Poppins-Light",
               ),
-            ),
-            SizedBox(height:10.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text("1 Hour",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                ),),
-                Text("${datalist[curr]['quote']['USD']['percent_change_1h'].toStringAsFixed(2)}%",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                  color: datalist[curr]['quote']['USD']['percent_change_1h']>=0?Color(0xff00b670): Colors.red,
-                ),)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text("24 Hour",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                )),
-                Text("${datalist[curr]['quote']['USD']['percent_change_24h'].toStringAsFixed(2)}%",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                  color: datalist[curr]['quote']['USD']['percent_change_24h']>=0?Color(0xff00b670): Colors.red,
-                ),)
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text("7 Days",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                )),
-                Text("${datalist[curr]['quote']['USD']['percent_change_7d'].toStringAsFixed(2)}%",style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                  color: datalist[curr]['quote']['USD']['percent_change_7d']>=0?Color(0xff00b670): Colors.red,
-                ))
-              ],
-            ),
-            Text("___________________________"),
-            Container(
-              width:300,
-              height:150,
-              child: SfCartesianChart(
-                borderColor: Colors.black,
-                title: ChartTitle(
-                  text: "Graph of Price Over the week",
-                  alignment: ChartAlignment.center,
-                  textStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
+              ),
+              SizedBox(height:10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("     Current Value",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: "Poppins-Light",
+                      )),
+                  Text("${datalist[curr]['quote']['USD']['price'].toStringAsFixed(2)}     ",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: "Poppins-Light",
+                      ))
+                ],
+              ),
+              SizedBox(height:10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("     Number of Market Pair",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
                     fontFamily: "Poppins-Light",
+                  ),),
+                  Text("${datalist[curr]['num_market_pairs'].toStringAsFixed(2)}     ",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                  ),)
+                ],
+              ),
+              SizedBox(height:10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("     Total Supply",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                  ),),
+                  Text("${datalist[curr]["total_supply"].toStringAsFixed(2)}     ",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                  ),)
+                ],
+              ),
+              SizedBox(height:10.0),
+              Text("Percent Change in:-",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  fontFamily: "Poppins-Light",
+                ),
+              ),
+              SizedBox(height:10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("1 Hour",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                  ),),
+                  Text("${datalist[curr]['quote']['USD']['percent_change_1h'].toStringAsFixed(2)}%",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                    color: datalist[curr]['quote']['USD']['percent_change_1h']>=0?Color(0xff00b670): Colors.red,
+                  ),)
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("24 Hour",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                  )),
+                  Text("${datalist[curr]['quote']['USD']['percent_change_24h'].toStringAsFixed(2)}%",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                    color: datalist[curr]['quote']['USD']['percent_change_24h']>=0?Color(0xff00b670): Colors.red,
+                  ),)
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("7 Days",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                  )),
+                  Text("${datalist[curr]['quote']['USD']['percent_change_7d'].toStringAsFixed(2)}%",style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                    color: datalist[curr]['quote']['USD']['percent_change_7d']>=0?Color(0xff00b670): Colors.red,
+                  ))
+                ],
+              ),
+              Text("___________________________"),
+              Container(
+                width:300,
+                height:300,
+                child: SfCartesianChart(
+                  borderColor: Colors.black,
+                  title: ChartTitle(
+                    text: "Graph of Price Over the week",
+                    alignment: ChartAlignment.center,
+                    textStyle: TextStyle(
+                        fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                    )
+                  ),
+                  enableAxisAnimation: true,
+                  primaryXAxis: NumericAxis(
+                    isVisible: false
+                  ),
+                  series: <ChartSeries>[
+                  LineSeries<Data,double>(dataSource: chart_data,
+                    xValueMapper: (Data prim,_) => prim.day,
+                    yValueMapper: (Data prim,_) => prim.val,
                   )
-                ),
-                enableAxisAnimation: true,
-                primaryXAxis: NumericAxis(
-                  isVisible: false
-                ),
-                series: <ChartSeries>[
-                LineSeries<Data,double>(dataSource: chart_data,
-                  xValueMapper: (Data prim,_) => prim.day,
-                  yValueMapper: (Data prim,_) => prim.val,
+                ],
                 )
-              ],
-              )
-            ),
+              ),
 
-          ],
-        )
+            ],
+          )
+        ),
       ),
     );
   }
@@ -406,7 +408,7 @@ class SecondScreenDark extends StatelessWidget {
               TextButton(
                 child: Text("Switch Mode"),
                 onPressed: (){
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => SecondScreen()),
                   );
@@ -519,176 +521,178 @@ class detailsDark extends StatelessWidget {
           ),
         )),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        child: Center(
 
-          child: Column(
-            children: [
-              SizedBox(height: 10.0),
-              Image.asset('iconss/${datalist[curr]['id'].toString()}.png'),
-              SizedBox(height:10.0),
-              Text("${datalist[curr]['symbol'].toString()}",
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  fontFamily: "Poppins-Light",
-                ),
-              ),
-              SizedBox(height:10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("     Current Value",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins-Light",
-                        color: Colors.white
-                      )
-                  ),
-                  Text("${datalist[curr]['quote']['USD']['price'].toStringAsFixed(2)}     ",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Poppins-Light",
-                        color: Colors.white
-                      ))
-                ],
-              ),
-              SizedBox(height:10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("     Number of Market Pair",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                    color: Colors.white
-                  ),
-                  ),
-                  Text("${datalist[curr]['num_market_pairs'].toStringAsFixed(2)}     ",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                      color: Colors.white
-                  ),)
-                ],
-              ),
-              SizedBox(height:10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("     Total Supply",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                    color: Colors.white
-                  ),
-                  ),
-                  Text("${datalist[curr]["total_supply"].toStringAsFixed(2)}     ",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                      color: Colors.white
-                  ),)
-                ],
-              ),
-              SizedBox(height:10.0),
-              Text("Percent Change in:-",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Poppins-Light",
-                  color: Colors.white
-                ),
-              ),
-              SizedBox(height:10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("1 Hour",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                    color: Colors.white
-                  ),),
-                  Text("${datalist[curr]['quote']['USD']['percent_change_1h'].toStringAsFixed(2)}%",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                    color: datalist[curr]['quote']['USD']['percent_change_1h']>=0?Color(0xff00b670): Colors.red,
-                  ),)
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("24 Hour",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                      color: Colors.white
-                  )),
-                  Text("${datalist[curr]['quote']['USD']['percent_change_24h'].toStringAsFixed(2)}%",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                    color: datalist[curr]['quote']['USD']['percent_change_24h']>=0?Color(0xff00b670): Colors.red,
-                  ),)
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("7 Days",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                      color: Colors.white
-                  )),
-                  Text("${datalist[curr]['quote']['USD']['percent_change_7d'].toStringAsFixed(2)}%",style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Poppins-Light",
-                    color: datalist[curr]['quote']['USD']['percent_change_7d']>=0?Color(0xff00b670): Colors.red,
-                  ))
-                ],
-              ),
-
-              Text("___________________________",
+            child: Column(
+              children: [
+                SizedBox(height: 10.0),
+                Image.asset('iconss/${datalist[curr]['id'].toString()}.png'),
+                SizedBox(height:10.0),
+                Text("${datalist[curr]['symbol'].toString()}",
                   style: TextStyle(
-                    color: Colors.white70,
+                    fontSize: 36,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontFamily: "Poppins-Light",
                   ),
-              ),
-              Container(
-                  width:300,
-                  height:150,
-                  child: SfCartesianChart(
-                    borderColor: Colors.white,
-                    title: ChartTitle(
-                        text: "Graph of Price Over the week",
-                        alignment: ChartAlignment.center,
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                ),
+                SizedBox(height:10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("     Current Value",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
                           fontFamily: "Poppins-Light",
+                          color: Colors.white
                         )
                     ),
-                    enableAxisAnimation: true,
-                    primaryXAxis: NumericAxis(
-                        isVisible: false
+                    Text("${datalist[curr]['quote']['USD']['price'].toStringAsFixed(2)}     ",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Poppins-Light",
+                          color: Colors.white
+                        ))
+                  ],
+                ),
+                SizedBox(height:10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("     Number of Market Pair",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                      color: Colors.white
                     ),
-                    series: <ChartSeries>[
-                      LineSeries<Data,double>(dataSource: chart_data,
-                        xValueMapper: (Data prim,_) => prim.day,
-                        yValueMapper: (Data prim,_) => prim.val,
-                      )
-                    ],
-                  )
-              ),
+                    ),
+                    Text("${datalist[curr]['num_market_pairs'].toStringAsFixed(2)}     ",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                        color: Colors.white
+                    ),)
+                  ],
+                ),
+                SizedBox(height:10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("     Total Supply",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                      color: Colors.white
+                    ),
+                    ),
+                    Text("${datalist[curr]["total_supply"].toStringAsFixed(2)}     ",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                        color: Colors.white
+                    ),)
+                  ],
+                ),
+                SizedBox(height:10.0),
+                Text("Percent Change in:-",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Poppins-Light",
+                    color: Colors.white
+                  ),
+                ),
+                SizedBox(height:10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text("1 Hour",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                      color: Colors.white
+                    ),),
+                    Text("${datalist[curr]['quote']['USD']['percent_change_1h'].toStringAsFixed(2)}%",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                      color: datalist[curr]['quote']['USD']['percent_change_1h']>=0?Color(0xff00b670): Colors.red,
+                    ),)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text("24 Hour",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                        color: Colors.white
+                    )),
+                    Text("${datalist[curr]['quote']['USD']['percent_change_24h'].toStringAsFixed(2)}%",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                      color: datalist[curr]['quote']['USD']['percent_change_24h']>=0?Color(0xff00b670): Colors.red,
+                    ),)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text("7 Days",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                        color: Colors.white
+                    )),
+                    Text("${datalist[curr]['quote']['USD']['percent_change_7d'].toStringAsFixed(2)}%",style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: "Poppins-Light",
+                      color: datalist[curr]['quote']['USD']['percent_change_7d']>=0?Color(0xff00b670): Colors.red,
+                    ))
+                  ],
+                ),
 
-            ],
-          )
+                Text("___________________________",
+                    style: TextStyle(
+                      color: Colors.white70,
+                    ),
+                ),
+                Container(
+                    width:300,
+                    height:150,
+                    child: SfCartesianChart(
+                      borderColor: Colors.white,
+                      title: ChartTitle(
+                          text: "Graph of Price Over the week",
+                          alignment: ChartAlignment.center,
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontFamily: "Poppins-Light",
+                          )
+                      ),
+                      enableAxisAnimation: true,
+                      primaryXAxis: NumericAxis(
+                          isVisible: false
+                      ),
+                      series: <ChartSeries>[
+                        LineSeries<Data,double>(dataSource: chart_data,
+                          xValueMapper: (Data prim,_) => prim.day,
+                          yValueMapper: (Data prim,_) => prim.val,
+                        )
+                      ],
+                    )
+                ),
+
+              ],
+            )
+        ),
       ),
     );
   }
