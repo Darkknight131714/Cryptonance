@@ -340,7 +340,7 @@ class details extends StatelessWidget {
               Text("___________________________"),
               Container(
                 width:300,
-                height:300,
+                height:150,
                 child: SfCartesianChart(
                   borderColor: Colors.black,
                   title: ChartTitle(
