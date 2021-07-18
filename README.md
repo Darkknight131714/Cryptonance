@@ -1,16 +1,7 @@
-# crypto_app
+# Cryptonance
 
-A new Flutter application.
+Flutter Application that provides all the real life details to you. Also comes in Dark Mode.
 
-## Getting Started
+## Details
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+If you want to know more about a certain crpytocurrency, tap on the tile of that cryptocurrency and you will be taken into a detailed view of the cryptocurrency. I have also incorporated try and catch block to take network problems into consideration.
